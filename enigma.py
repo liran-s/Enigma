@@ -1,12 +1,15 @@
 class Rotor:
     wiring = ""
+    abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
     def __init__(self, wiring):
         self.wiring = wiring
-        
+                
     def abc_index(self, c):
-        index = ord(c.upper()) - ord('A')
-        print(f"index of {c} is {index}")
-        return index
+        return self.abc.find(c.upper())
+        # index = ord(c.upper()) - ord('A')
+        # print(f"index of {c} is {index}")
+        # return index
 
     def map_r_to_l(self, c):
         return self.wiring[self.abc_index(c)]
