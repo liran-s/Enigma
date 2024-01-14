@@ -19,3 +19,7 @@ class Rotor:
     
     def wiring_index(self, c):
         return self.wiring.find(c.upper())
+
+class Reflector(Rotor):
+    def test_map_refl(self, c):
+        return self.map_r_to_l(c)
