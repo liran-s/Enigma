@@ -23,3 +23,24 @@ class Rotor:
 class Reflector(Rotor):
     def test_map_refl(self, c):
         return self.map_r_to_l(c)
+    
+class Plugboard():
+    plugged = []        
+    
+    def __init__(self, plugged):
+        self.plugged = plugged
+
+        if len(plugged) > 10:
+            raise Exception("Error")
+
+    def map_plug(self, c):
+        for plug in self.plugged:
+            if c == plug[0]:
+                # print(f'Return plugged {plug[1]}')
+                return plug[1]
+            elif c == plug[1]:
+                # print(f'Return plugged {plug[0]}')
+                return plug[0]
+        
+        
+        return c
