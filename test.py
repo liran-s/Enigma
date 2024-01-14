@@ -1,5 +1,5 @@
 import unittest
-from enigma import Rotor, Reflector, Plugboard
+from enigma import Rotor, Reflector, Plugboard, Enigma
 
 class TestRotor(unittest.TestCase):
     wiring = "EKMFLGDQVZNTOWYHXUSPAIBRCJ"
@@ -38,6 +38,23 @@ class TestPlugboard(unittest.TestCase):
         for i, c in enumerate(self.abc):
             self.assertEqual(plugboard.map_plug(plugboard.map_plug(c)), c, f'Wrong')
 
-        
+class TestEnigma(unittest.TestCase):
+    abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
+    def test_enigma(self):
+        enigma = Enigma("EKMFLGDQVZNTOWYHXUSPAIBRCJ", self.abc, self.abc, "YRUHQSLDPXNGOKMIEBFZCWVJAT", [])
+
+        for i in range(1,10):
+            print(f'-------{i}')
+            for c in self.abc:
+                print(f'{enigma.cipher_char(c)}', end='')
+            print(f'')
+
+    #def test_stepping(self):
+     #   enigma = Enigma("EKMFLGDQVZNTOWYHXUSPAIBRCJ", self.abc, self.abc, "YRUHQSLDPXNGOKMIEBFZCWVJAT", [])
+
+        #for i in range(1,677):
+        #    enigma.step()
+
 if __name__ == '__main__':
     unittest.main()
